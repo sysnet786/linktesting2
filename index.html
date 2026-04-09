@@ -2,17 +2,16 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Tally Form - Chrome Mein Open Karein 42</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open in Chrome</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
@@ -20,304 +19,114 @@
             align-items: center;
             padding: 20px;
         }
-
-        .container {
-            max-width: 500px;
-            width: 100%;
+        .card {
             background: white;
             border-radius: 32px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 40px 24px;
+            max-width: 400px;
+            width: 100%;
             text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-
-        .header-icon {
+        .icon {
             font-size: 64px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
-
-        .header h1 {
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
+        h2 {
+            color: #1a1a2e;
+            margin-bottom: 12px;
         }
-
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
+        p {
+            color: #666;
             font-size: 14px;
-        }
-
-        .content {
-            padding: 32px 24px;
-        }
-
-        .info-box {
-            background: #f0f4ff;
-            border-radius: 20px;
-            padding: 20px;
             margin-bottom: 28px;
         }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .info-icon {
-            font-size: 24px;
-        }
-
-        .info-text {
-            flex: 1;
-        }
-
-        .info-text strong {
-            display: block;
-            color: #1a1a2e;
-            font-size: 15px;
-            margin-bottom: 4px;
-        }
-
-        .info-text span {
-            display: block;
-            color: #666;
-            font-size: 13px;
-        }
-
-        .open-btn {
-            display: block;
-            width: 100%;
+        .chrome-btn {
             background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
             color: white;
-            text-align: center;
-            padding: 16px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 18px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
-            margin-bottom: 20px;
             border: none;
-            cursor: pointer;
-        }
-
-        .open-btn:active {
-            transform: scale(0.98);
-            box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
-        }
-
-        .fallback-section {
-            border-top: 1px solid #eee;
-            padding-top: 24px;
-            margin-top: 8px;
-        }
-
-        .fallback-title {
-            font-size: 14px;
-            color: #666;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .copy-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
             width: 100%;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(66,133,244,0.3);
+        }
+        .chrome-btn:active {
+            transform: scale(0.97);
+        }
+        .copy-btn {
             background: #f5f5f5;
             color: #333;
-            text-align: center;
-            padding: 14px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
             border: 1px solid #ddd;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            width: 100%;
             cursor: pointer;
-            transition: background 0.2s;
+            margin-top: 12px;
         }
-
-        .copy-btn:active {
-            background: #e0e0e0;
-        }
-
-        .url-text {
-            background: #f5f5f5;
+        .note {
+            background: #fff8e1;
             padding: 12px;
             border-radius: 12px;
             font-size: 12px;
-            color: #666;
-            text-align: center;
-            margin-top: 12px;
-            word-break: break-all;
-            font-family: monospace;
-        }
-
-        .note {
-            background: #fff8e1;
-            border-left: 4px solid #ffc107;
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-
-        .note p {
-            font-size: 12px;
             color: #856404;
-            line-height: 1.5;
-        }
-
-        .footer {
-            background: #fafafa;
-            padding: 16px 24px;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        .footer p {
-            font-size: 11px;
-            color: #999;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                border-radius: 24px;
-            }
-            
-            .header {
-                padding: 32px 20px;
-            }
-            
-            .content {
-                padding: 24px 20px;
-            }
-            
-            .open-btn {
-                padding: 14px 20px;
-                font-size: 16px;
-            }
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
-        <div class="header-icon">📋</div>
-        <h1>Part Demand Form 1</h1>
-        <p>Image / PDF Upload Required</p>
-    </div>
-
-    <div class="content">
-        <div class="info-box">
-            <div class="info-item">
-                <div class="info-icon">⚠️</div>
-                <div class="info-text">
-                    <strong>Upload Issue?</strong>
-                    <span>App ke andar file upload kaam nahi kar raha</span>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">✅</div>
-                <div class="info-text">
-                    <strong>Solution</strong>
-                    <span>Chrome browser mein form open karein</span>
-                </div>
-            </div>
-        </div>
-
-       <!-- Main Button - Chrome mein khulega -->
-<a href="#" onclick="openInChrome()" class="open-btn">
-   🌐 Chrome Mein Form Open Karein
-</a>
-           🌐 Chrome Mein Form Open Karein
+<div class="card">
+    <div class="icon">🌐</div>
+    <h2>Open in Chrome new</h2>
+    <p>Image / PDF upload ke liye<br>Chrome mein open karein</p>
     
-        <div class="fallback-section">
-            <div class="fallback-title">─ या फिर ─</div>
-            
-            <button onclick="copyToClipboard()" class="copy-btn">
-                📋 Copy Form Link
-            </button>
-            <div class="url-text" id="formUrl">
-                https://tally.so/r/vGrBzD
-            </div>
-        </div>
-
-        <div class="note">
-            <p>
-                💡 <strong>Instructions:</strong><br>
-                1. Chrome button tap karein → automatic Chrome khulega<br>
-                2. Form mein image/PDF upload karein<br>
-                3. Submit karein ✅<br>
-                <br>
-                🔁 Agar button kaam na kare toh URL copy karke<br>
-                &nbsp;&nbsp;&nbsp;manually Chrome mein paste karein
-            </p>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>© Part Demand System | Best viewed in Chrome Browser</p>
+    <!-- Yeh button Chrome kholega -->
+    <button class="chrome-btn" onclick="openInChrome()">
+        🔓 Chrome Mein Open Karein
+    </button>
+    
+    <button class="copy-btn" onclick="copyUrl()">
+        📋 Copy Link (Alternative)
+    </button>
+    
+    <div class="note">
+        💡 Button tap karte hi Chrome open ho jayega.<br>
+        Agar nahi khulta toh copy karke manually paste karein.
     </div>
 </div>
 
 <script>
 function openInChrome() {
-    var url = "https://tally.so/r/vGrBzD";
-
-    // 1. Chrome intent (force try)
-    var intentUrl = "intent://tally.so/r/vGrBzD#Intent;scheme=https;package=com.android.chrome;end";
-    window.location.href = intentUrl;
-
-    // 2. fallback (external open try)
+    // Tally form ka URL
+    const tallyUrl = "https://tally.so/r/vGrBzD";
+    
+    // 🔥 Chrome open karne ka tarika
+    // Method 1: Intent URL (try karo)
+    window.location.href = "intent://tally.so/r/vGrBzD#Intent;scheme=https;package=com.android.chrome;end";
+    
+    // Method 2: Fallback - normal link (agar intent fail ho to)
     setTimeout(function() {
-        window.open(url, "_system");
-    }, 1000);
-
-    // 3. final fallback (normal open)
-    setTimeout(function() {
-        window.location.href = url;
-    }, 2000);
+        window.location.href = tallyUrl;
+    }, 500);
 }
 
-function copyToClipboard() {
+function copyUrl() {
     const url = "https://tally.so/r/vGrBzD";
     navigator.clipboard.writeText(url).then(() => {
         const btn = document.querySelector('.copy-btn');
-        const originalText = btn.innerHTML;
+        const original = btn.innerHTML;
         btn.innerHTML = '✅ Copied!';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-        }, 2000);
+        setTimeout(() => { btn.innerHTML = original; }, 2000);
     }).catch(() => {
-        alert('Copy karne mein problem. Manual copy karein: ' + url);
+        alert('Copy failed: ' + url);
     });
 }
 </script>
+
 </body>
 </html>
