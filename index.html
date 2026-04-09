@@ -251,16 +251,12 @@
             </div>
         </div>
 
-        <!-- Main Button - Chrome mein khulega -->
-        <!-- <a href="intent://tally.so/r/vGrBzD#Intent;scheme=https;package=com.android.chrome;end"
-           class="open-btn">
+       <!-- Main Button - Chrome mein khulega -->
+<a href="#" onclick="openInChrome()" class="open-btn">
+   🌐 Chrome Mein Form Open Karein
+</a>
            🌐 Chrome Mein Form Open Karein
-        </a> -->
-                <a href="https://tally.so/r/vGrBzD"
-           class="open-btn">
-           🌐 Chrome Mein Form Open Karein
-        </a>
-
+    
         <div class="fallback-section">
             <div class="fallback-title">─ या फिर ─</div>
             
@@ -291,20 +287,37 @@
 </div>
 
 <script>
-    function copyToClipboard() {
-        const url = "https://tally.so/r/vGrBzD";
-        navigator.clipboard.writeText(url).then(() => {
-            const btn = document.querySelector('.copy-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '✅ Copied!';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 2000);
-        }).catch(() => {
-            alert('Copy karne mein problem. Manual copy karein: ' + url);
-        });
-    }
-</script>
+function openInChrome() {
+    var url = "https://tally.so/r/vGrBzD";
 
+    // 1. Chrome intent (force try)
+    var intentUrl = "intent://tally.so/r/vGrBzD#Intent;scheme=https;package=com.android.chrome;end";
+    window.location.href = intentUrl;
+
+    // 2. fallback (external open try)
+    setTimeout(function() {
+        window.open(url, "_system");
+    }, 1000);
+
+    // 3. final fallback (normal open)
+    setTimeout(function() {
+        window.location.href = url;
+    }, 2000);
+}
+
+function copyToClipboard() {
+    const url = "https://tally.so/r/vGrBzD";
+    navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✅ Copied!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
+    }).catch(() => {
+        alert('Copy karne mein problem. Manual copy karein: ' + url);
+    });
+}
+</script>
 </body>
 </html>
